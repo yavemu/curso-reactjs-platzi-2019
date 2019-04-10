@@ -4,6 +4,6 @@ import ReactDOM from 'react-dom';
 import "bootstrap/dist/css/bootstrap.css";
 import "./global.css";
 
-import Badges from './pages/Badges/Badges';
+import App from './components/App/App';
 
-ReactDOM.render(<Badges />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
