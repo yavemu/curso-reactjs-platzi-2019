@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import "bootstrap/dist/css/bootstrap.css";
 import "./global.css";
 
-import Badge from './components/Badge/Badge';
-import AvatarImg from './images/avatar.png';
+import BadgeNew from './pages/BadgeNew/BadgeNew';
 
-ReactDOM.render(<Badge firstName='YAMid' lastName='Vélez Muñoz' jobTitle='Developer Web' avatarUrl={AvatarImg} twitter='yavemu' />, document.getElementById('app'));
+ReactDOM.render(<BadgeNew />, document.getElementById('app'));
