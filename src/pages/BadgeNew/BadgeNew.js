@@ -9,6 +9,31 @@ import './BadgeNew.css';
 
 class BadgeNew extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            form: {
+                email: undefined,
+                firstName: undefined,
+                jobTitle: undefined,
+                lastName: undefined,
+                twitter: undefined
+            }
+        }
+
+        this.handleOnChange = this.handleOnChange.bind(this);
+    }
+
+    handleOnChange = e => {
+        this.setState({
+            form: {
+                ...this.state.form,
+                [e.target.name]: e.target.value
+            }
+        });
+    }
+
     render () {
         return <div>
             <Navbar />
@@ -19,11 +44,11 @@ class BadgeNew extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col-6">
-                        <Badge firstName='YAMid' lastName='Vélez Muñoz' jobTitle='Developer Web' avatarUrl={AvatarImg} twitter='yavemu' />
+                        <Badge {...this.state.form} avatarUrl={AvatarImg} />
                     </div>
 
                     <div className="col-6">
-                        <BadgeForm />
+                        <BadgeForm onChange={this.handleOnChange} {...this.state.form} />
                     </div>
                 </div>
             </div>
