@@ -1,0 +1,10 @@
+.BadgesList__Badge {
+    background: white;
+}
+
+
+.BadgeList__Badge-twitter,
+.BadgeList__Badge-twitter >img {
+    height: 20px;
+    color: #00AAF5;
+}
