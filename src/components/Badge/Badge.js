@@ -1,25 +1,32 @@
 import React from 'react';
 import LogoImg from '../../images/logo.svg';
-import AvatarImg from '../../images/avatar.png';
 import './Badge.css';
 
 class Badge extends React.Component {
-
     
     render() {
+        const {
+            firstName,
+            lastName,
+            avatarUrl,
+            jobTitle,
+            twitter
+        } = this.props;
+
+
         return <div className="Badge">
             <div className="Badge__header">
                 <img src={LogoImg} alt="Logo"/>
             </div>
 
             <div className='Badge__section-name'>
-                <img className="Badge__avatar" src={AvatarImg} alt="Avatar" />
-                <h1>Yamid <br/> Vélez Muñoz</h1>
+                <img className="Badge__avatar" src={avatarUrl} alt="Avatar" />
+                <h1>{firstName} <br/> {lastName}</h1>
             </div>
 
             <div className='Badge__section-info'>
-                <h3>Developer web</h3>
-                <div>@yavemu</div>
+                <h3>{jobTitle}</h3>
+                <div>@{twitter}</div>
             </div>
 
             <div className='Badge__footer'>
