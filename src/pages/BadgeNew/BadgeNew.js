@@ -35,8 +35,7 @@ class BadgeNew extends React.Component {
     }
 
     render () {
-        return <div>
-            <Navbar />
+        return <React.Fragment>
             <div className="BadgeNew__hero">
                 <img src={header} alt="Logo" className="image-fluid"/>
             </div>
@@ -52,7 +51,7 @@ class BadgeNew extends React.Component {
                     </div>
                 </div>
             </div>
-        </div>
+        </React.Fragment>
     }
 }
 
