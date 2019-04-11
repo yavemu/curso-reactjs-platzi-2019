@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../../components/Navbar/Navbar";
 import Badge from '../../components/Badge/Badge';
 import BadgeForm from '../../components/BadgeForm/BadgeForm';
 
