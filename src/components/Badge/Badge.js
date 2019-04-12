@@ -1,18 +1,25 @@
 import React from 'react';
+import Gravatar from "../Gravatar/Gravatar";
 import LogoImg from '../../images/logo.svg';
 import './Badge.css';
+
 
 class Badge extends React.Component {
     
     render() {
-        const {
+        let {
+            email,
             firstName,
-            lastName,
-            avatarUrl,
             jobTitle,
-            twitter
+            lastName,
+            twitter,
+            avatarUrl
         } = this.props;
-
+        
+        firstName = !!firstName || "FIRST NAME";
+        lastName = !!lastName || "LAST NAME";
+        jobTitle = !!jobTitle || "JOB TITLE";
+        twitter = !!twitter || "twitter";
 
         return (
             <div className="Badge">
@@ -21,13 +28,14 @@ class Badge extends React.Component {
                 </div>
 
                 <div className='Badge__section-name'>
-                    <img className="Badge__avatar" src={avatarUrl} alt="Avatar" />
+                    <Gravatar className="Badge__avatar" email={email}/>
                     <h1>{firstName} <br /> {lastName}</h1>
                 </div>
 
                 <div className='Badge__section-info'>
                     <h3>{jobTitle}</h3>
                     <div>@{twitter}</div>
+                    <div>{email}</div>
                 </div>
 
                 <div className='Badge__footer'>

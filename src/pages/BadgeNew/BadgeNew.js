@@ -2,8 +2,7 @@ import React from "react";
 import Badge from '../../components/Badge/Badge';
 import BadgeForm from '../../components/BadgeForm/BadgeForm';
 
-import AvatarImg from '../../images/avatar.png';
-import header from '../../images/badge-header.svg';
+import header from '../../images/platziconf-logo.svg';
 import './BadgeNew.css';
 
 class BadgeNew extends React.Component {
@@ -17,7 +16,8 @@ class BadgeNew extends React.Component {
                 firstName: undefined,
                 jobTitle: undefined,
                 lastName: undefined,
-                twitter: undefined
+                twitter: undefined,
+                avatarUrl: undefined
             }
         }
 
@@ -36,13 +36,13 @@ class BadgeNew extends React.Component {
     render () {
         return <React.Fragment>
             <div className="BadgeNew__hero">
-                <img src={header} alt="Logo" className="image-fluid"/>
+                <img className="image-fluid BadgeNew__hero-image" src={header} alt="Logo"/>
             </div>
 
             <div className="container">
                 <div className="row">
                     <div className="col-6">
-                        <Badge {...this.state.form} avatarUrl={AvatarImg} />
+                        <Badge {...this.state.form} />
                     </div>
 
                     <div className="col-6">
