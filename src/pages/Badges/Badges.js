@@ -1,5 +1,7 @@
 import React from "react";
 import BadgesList from "../../components/BadgesList/BadgesList";
+import LoadingAnimation from "../../components/LoadingAnimation/LoadingAnimation";
+import PageError from "../../components/PageError/PageError";
 import confLogo from "../../images/badge-header.svg";
 import { Link } from "react-router-dom";
 import api from "../../api";
@@ -30,11 +32,11 @@ class Badges extends React.Component {
     
     render(){
             if (this.state.error) {
-                return `Ups!!!. There are an error ${this.state.error.message}`
+                return <PageError error={this.state.error} />
             }
             
             if (this.state.loading) {
-                return 'Loading...'
+                return <LoadingAnimation />
             }
 
             
