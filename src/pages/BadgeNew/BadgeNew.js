@@ -18,12 +18,12 @@ class BadgeNew extends React.Component {
             loading: false,
             error: null,
             form: {
-                email: undefined,
-                firstName: undefined,
-                jobTitle: undefined,
-                lastName: undefined,
-                twitter: undefined,
-                avatarUrl: undefined
+                email: '',
+                firstName: '',
+                jobTitle: '',
+                lastName: '',
+                twitter: '',
+                avatarUrl: ''
             }
         }
 
@@ -43,12 +43,13 @@ class BadgeNew extends React.Component {
         e.preventDefault();
 
         this.setState({ loading:true, error:null });
-        
-        const createAvatarUrl = `https://www.gravatar.com/avatar/${md5(this.state.form.email)}?d=identicon`;
-        this.state.form.avatarUrl = createAvatarUrl;
+        if (this.state.form.email) {
+            const createAvatarUrl = `https://www.gravatar.com/avatar/${md5(this.state.form.email)}?d=identicon`;
+            this.state.form.avatarUrl = createAvatarUrl;
+        }
         
         try {
-            await api.badges.create(this.state.form)
+            await api.badges.create(this.state.form);
             this.setState({ loading:false });
             this.props.history.push("/badges");
         } catch (error) {
@@ -57,7 +58,7 @@ class BadgeNew extends React.Component {
     }
 
     render () {
-        if (this.state.loading) {
+        if (this.state.loading && !this.state.error) {
             return <LoadingAnimation/>
         }
         return <React.Fragment>
@@ -72,7 +73,12 @@ class BadgeNew extends React.Component {
                     </div>
 
                     <div className="col-6">
-                        <BadgeForm onChange={this.handleOnChange} onSubmit={this.handleSubmit} {...this.state.form} />
+                        <BadgeForm 
+                            onChange={this.handleOnChange} 
+                            onSubmit={this.handleSubmit} 
+                            {...this.state.form} 
+                            error={this.state.error}
+                            />
                     </div>
                 </div>
             </div>

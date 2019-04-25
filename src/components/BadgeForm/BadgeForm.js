@@ -33,6 +33,7 @@ class BadgeForm extends React.Component {
                         <input onChange={this.props.onChange} className="form-control" type="text" name='twitter' value={this.props.twitter} />
                     </div>
 
+                    {this.props.error && <p className="text-danger">{this.props.error.message}</p>}
                     <button className="btn btn-primary">Save</button>
                 </form>
             </React.Fragment>
