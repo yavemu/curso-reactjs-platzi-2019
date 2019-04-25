@@ -7,6 +7,7 @@ import header from '../../images/platziconf-logo.svg';
 import './BadgeNew.css';
 
 import api from "../../api";
+import LoadingAnimation from "../../components/LoadingAnimation/LoadingAnimation";
 
 class BadgeNew extends React.Component {
 
@@ -14,7 +15,7 @@ class BadgeNew extends React.Component {
         super(props);
 
         this.state = {
-            loading: true,
+            loading: false,
             error: null,
             form: {
                 email: undefined,
@@ -56,6 +57,9 @@ class BadgeNew extends React.Component {
     }
 
     render () {
+        if (this.state.loading) {
+            return <LoadingAnimation/>
+        }
         return <React.Fragment>
             <div className="BadgeNew__hero">
                 <img className="image-fluid BadgeNew__hero-image" src={header} alt="Logo"/>
