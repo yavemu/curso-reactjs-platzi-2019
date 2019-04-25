@@ -12,14 +12,8 @@ class Badge extends React.Component {
             firstName,
             jobTitle,
             lastName,
-            twitter,
-            avatarUrl
+            twitter
         } = this.props;
-        
-        firstName = !!firstName || "FIRST NAME";
-        lastName = !!lastName || "LAST NAME";
-        jobTitle = !!jobTitle || "JOB TITLE";
-        twitter = !!twitter || "twitter";
 
         return (
             <div className="Badge">

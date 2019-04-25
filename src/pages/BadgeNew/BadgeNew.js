@@ -1,9 +1,12 @@
 import React from "react";
 import Badge from '../../components/Badge/Badge';
 import BadgeForm from '../../components/BadgeForm/BadgeForm';
+import md5 from 'md5';
 
 import header from '../../images/platziconf-logo.svg';
 import './BadgeNew.css';
+
+import api from "../../api";
 
 class BadgeNew extends React.Component {
 
@@ -11,6 +14,8 @@ class BadgeNew extends React.Component {
         super(props);
 
         this.state = {
+            loading: true,
+            error: null,
             form: {
                 email: undefined,
                 firstName: undefined,
@@ -33,6 +38,23 @@ class BadgeNew extends React.Component {
         });
     }
 
+    handleSubmit = async e => {
+        e.preventDefault();
+
+        this.setState({ loading:true, error:null });
+        
+        const createAvatarUrl = `https://www.gravatar.com/avatar/${md5(this.state.form.email)}?d=identicon`;
+        this.state.form.avatarUrl = createAvatarUrl;
+        
+        try {
+            await api.badges.create(this.state.form)
+            this.setState({ loading:false });
+            this.props.history.push("/badges");
+        } catch (error) {
+            this.setState({ loading:true, error });
+        }
+    }
+
     render () {
         return <React.Fragment>
             <div className="BadgeNew__hero">
@@ -46,7 +68,7 @@ class BadgeNew extends React.Component {
                     </div>
 
                     <div className="col-6">
-                        <BadgeForm onChange={this.handleOnChange} {...this.state.form} />
+                        <BadgeForm onChange={this.handleOnChange} onSubmit={this.handleSubmit} {...this.state.form} />
                     </div>
                 </div>
             </div>
