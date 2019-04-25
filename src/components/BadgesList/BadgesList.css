@@ -1,7 +1,13 @@
 .BadgesList__Badge {
     background: white;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.23);
+    border-radius: 5px;
 }
 
+.BadgesListItem {
+    display: flex;
+    padding: 1rem;
+}
 
 .BadgeList__Badge-twitter,
 .BadgeList__Badge-twitter >img {
